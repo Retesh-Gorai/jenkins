@@ -1,15 +1,16 @@
-
 pipeline {
   agent {
-    docker { image 'node:21-alpine3.18'
+    docker { image 'jenkins/inbound-agent'
            }
   }
   stages {
-    stage('Test') {
+    stage('Upload to Artifactory') {
       steps {
-        sh 'node --version'
+        script {
+          def uploadArtifactory = load "${WORKSPACE}/src/groovy/uploadArtifactory.groovy"
+           uploadArtifactory.execute()
+        }
       }
     }
   }
 }
-
