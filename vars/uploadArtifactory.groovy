@@ -10,6 +10,7 @@ def execute() {
     // Download and install JFrog CLI
     sh "curl -fL ${jfrogCliUrl}/v${jfrogCliVersion} | sh"
     sh "echo Jfrog cli has been installed successfully"
+    sh "ls -ltR"
     sh "chmod +x ${jfrogCliInstallationDir}/jfrog"
     sh "echo Jfrog cli permission has been modified successfully"
 
