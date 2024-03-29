@@ -11,7 +11,8 @@ def execute() {
     sh "curl -fL ${jfrogCliUrl}/v${jfrogCliVersion} | sh"
     sh "echo Jfrog cli has been installed successfully"
     sh "ls -ltR"
-    sh "chmod +x ${jfrogCliInstallationDir}/jfrog"
+    // sh "chmod +x ${jfrogCliInstallationDir}/jfrog"
+    sh "jfrog --version"
     sh "echo Jfrog cli permission has been modified successfully"
 
     // Use Jenkins credentials to get Artifactory username and password
