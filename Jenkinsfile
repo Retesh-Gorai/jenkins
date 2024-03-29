@@ -7,7 +7,9 @@ pipeline {
   stages {
     stage('Upload to Artifactory') {
       steps {
+        script {
             uploadArtifactory.execute()
+        }
       }
     }
   }
