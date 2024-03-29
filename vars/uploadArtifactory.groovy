@@ -9,6 +9,7 @@ def execute() {
     // url -fL https://install-cli.jfrog.io | sh
     // https://releases.jfrog.io/artifactory/jfrog-cli/v2/2.5.0/jfrog-cli-linux-amd64/
     // Download and install JFrog CLI
+    sh "whoami"
     sh "chmod +wx ${jfrogCliInstallationDir}"
     sh "curl -fL ${jfrogCliUrl} | sh"
     sh "echo Jfrog cli has been installed successfully"
