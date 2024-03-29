@@ -8,7 +8,7 @@ def execute() {
     //curl -fL https://getcli.jfrog.io/v2 | sh
     // https://releases.jfrog.io/artifactory/jfrog-cli/v2/2.5.0/jfrog-cli-linux-amd64/
     // Download and install JFrog CLI
-    sh "curl -fL ${jfrogCliUrl}/artifactory/jfrog-cli/v${jfrogCliVersion}/jfrog-cli-linux-amd64/jfrog -o ${jfrogCliInstallationDir}/jfrog"
+    sh "curl -fL ${jfrogCliUrl}/v${jfrogCliVersion} | sh"
     sh "echo Jfrog cli has been installed successfully"
     sh "chmod +x ${jfrogCliInstallationDir}/jfrog"
     sh "echo Jfrog cli permission has been modified successfully"
