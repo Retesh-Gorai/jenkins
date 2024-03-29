@@ -13,8 +13,8 @@ def execute() {
     sh "curl -fL ${jfrogCliUrl}"
     sh "echo Jfrog cli has been installed successfully"
     sh "ls -ltR"
-    // sh "chmod +x ${jfrogCliInstallationDir}/jfrog"
-    sh "echo $JFROG_CLI_HOME_DIR"
+    sh "chmod +x ${jfrogCliInstallationDir}/jf"
+    // sh "echo $JFROG_CLI_HOME_DIR"
     sh "${jfrogCliInstallationDir}/jf --version"
     sh "echo Jfrog cli permission has been modified successfully"
 
