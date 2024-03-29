@@ -16,17 +16,17 @@ def execute() {
     sh "pwd"
     sh "echo ${WORKSPACE}"
     sh "chmod +x ${WORKSPACE}/jf"
+    sh "echo Jfrog cli permission has been modified successfully"
     // sh "echo $JFROG_CLI_HOME_DIR"
     sh "${WORKSPACE}/jf --version"
-    sh "echo Jfrog cli permission has been modified successfully"
 
     // Use Jenkins credentials to get Artifactory username and password
     withCredentials([usernamePassword(credentialsId: 'jfrog-artifactory-cred', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
         // Use JFrog CLI to upload the JAR file to Artifactory
         sh "echo Jfrog config has been initiated"
-        sh "${jfrogCliInstallationDir}/jfrog rt config --url ${artifactoryUrl} --user ${USERNAME} --password ${PASSWORD} --interactive=false"
+        sh "${WORKSPACE}/jf rt config --url ${artifactoryUrl} --user ${USERNAME} --password ${PASSWORD} --interactive=false"
         sh "echo Jfrog config has been completed"
-        sh "${jfrogCliInstallationDir}/jfrog rt u ${targetJarFilePath} ${artifactoryUrl}/testJava.jar"
+        sh "${WORKSPACE}/jf rt u ${targetJarFilePath} ${artifactoryUrl}/testJava.jar"
         sh "echo Jfrog upload has been completed"
     }
     // sh "echo Hi from retesh"
