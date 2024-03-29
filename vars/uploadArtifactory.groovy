@@ -14,9 +14,10 @@ def execute() {
     sh "echo Jfrog cli has been installed successfully"
     sh "ls -ltR"
     sh "pwd"
-    sh "chmod +x ${jfrogCliInstallationDir}/jf"
+    sh "echo ${WORKSPACE}"
+    // sh "chmod +x ./jf"
     // sh "echo $JFROG_CLI_HOME_DIR"
-    sh "${jfrogCliInstallationDir}/jf --version"
+    // sh "./jf --version"
     sh "echo Jfrog cli permission has been modified successfully"
 
     // Use Jenkins credentials to get Artifactory username and password
