@@ -3,7 +3,7 @@ def execute() {
     // def jfrogCliVersion = "2"
     def jfrogCliInstallationDir = "/usr/local/bin"
     def targetJarFilePath = "src/target/testJava.jar"
-    def artifactoryUrl = "https://devopsorg.jfrog.io/"
+    def artifactoryUrl = "https://devopsorg.jfrog.io/artifactory/"
 
     //curl -fL https://getcli.jfrog.io/v2 | sh
     //curl -fL https://install-cli.jfrog.io | sh
@@ -23,9 +23,9 @@ def execute() {
         // Use JFrog CLI to upload the JAR file to Artifactory
         sh "echo Jfrog config has been initiated"
         sh 'echo The secret is $SECRET_TEXT'
-        // sh '${WORKSPACE}/jfrog rt config --url ${artifactoryUrl} --user ${USERNAME} --password ${PASSWORD} --interactive=false'
+        sh '${WORKSPACE}/jfrog c add --url ${artifactoryUrl} --access-token {SECRET_TEXT} --interactive=false'
         // sh "echo Jfrog config has been completed"
-        sh '${WORKSPACE}/jfrog rt upload --url ${artifactoryUrl} --access-token {SECRET_TEXT} ${WORKSPACE}/${targetJarFilePath} test-repo/'
+        sh '${WORKSPACE}/jfrog rt u ${WORKSPACE}/${targetJarFilePath} test-repo/'
         sh "echo Jfrog upload has been completed"
     }
     // sh "echo Hi from retesh"
