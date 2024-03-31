@@ -29,6 +29,7 @@ def execute() {
         sh '${WORKSPACE}/jfrog config use articonfig'
         sh '${WORKSPACE}/jfrog config show articonfig'
         sh '${WORKSPACE}/jfrog config rm articonfig'
+        sh '${WORKSPACE}/jfrog config show articonfig'
         sh "echo Jfrog config has been completed"
         // sh '${WORKSPACE}/jfrog rt u ${WORKSPACE}/${targetJarFilePath} test-repo/'
         // sh "echo Jfrog upload has been completed"
