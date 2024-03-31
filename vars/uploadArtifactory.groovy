@@ -1,6 +1,6 @@
 def execute() {
     def jfrogCliUrl = "https://getcli.jfrog.io"
-    // def jfrogCliVersion = "2"
+    // def jfrogCliVersion = "2.2.0"
     def jfrogCliInstallationDir = "/usr/local/bin"
     def targetJarFilePath = "../target/testJava.jar"
     def artifactoryUrl = "https://devopsorg.jfrog.io/"
@@ -10,7 +10,7 @@ def execute() {
     // https://releases.jfrog.io/artifactory/jfrog-cli/v2/2.5.0/jfrog-cli-linux-amd64/
     // Download and install JFrog CLI
     // sh "chmod +wx ${jfrogCliInstallationDir}"
-    sh "curl -fL ${jfrogCliUrl}/"
+    sh "curl -fL ${jfrogCliUrl}/v${jfrogCliVersion}"
     sh "echo Jfrog cli has been installed successfully"
     sh "ls -ltR"
     sh "chmod +x ${WORKSPACE}/jfrog"
