@@ -11,7 +11,7 @@ pipeline {
     stage('Upload to Artifactory') {
       steps {
         script {
-            echo "${WORKSPACE}"
+            echo "current ws: ${WORKSPACE}"
             uploadArtifactory.execute()
         }
       }
