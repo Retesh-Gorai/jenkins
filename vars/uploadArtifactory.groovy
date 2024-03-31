@@ -23,7 +23,7 @@ def execute() {
         // Use JFrog CLI to upload the JAR file to Artifactory
         sh "echo Jfrog config has been initiated"
         sh "echo 'The secret is $SECRET_TEXT'"
-        sh "${WORKSPACE}/jfrog rt config --url ${artifactoryUrl} --user ${USERNAME} --password ${PASSWORD} --interactive=false"
+        sh '${WORKSPACE}/jfrog rt config --url ${artifactoryUrl} --user ${USERNAME} --password ${PASSWORD} --interactive=false'
         sh "echo Jfrog config has been completed"
         sh "${WORKSPACE}/jfrog rt u ${targetJarFilePath} test-repo/testJava.jar"
         sh "echo Jfrog upload has been completed"
