@@ -25,7 +25,7 @@ def execute() {
         sh 'echo The secret is $SECRET_TEXT'
         // sh "chmod 777 /"
         // echo "${JFROG_HOME}"
-        sh '${WORKSPACE}/jfrog c add articonfig310124 --url "${artifactoryUrl}" --access-token "${SECRET_TEXT}" --interactive=false'
+        sh '${WORKSPACE}/jfrog c add articonfig --url "${artifactoryUrl}" --access-token "${SECRET_TEXT}" --interactive=false'
         sh '${WORKSPACE}/jfrog config use articonfig'
         sh '${WORKSPACE}/jfrog config show articonfig'
         sh '${WORKSPACE}/jfrog config rm articonfig'
