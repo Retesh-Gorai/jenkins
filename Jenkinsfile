@@ -4,9 +4,9 @@ pipeline {
     docker { image 'maven:latest'
            }
   }
-  // environment {
-  //       JFROG_CLI_HOME_DIR = '${WORKSPACE}/custom/jfrog_home'
-  // }
+  environment {
+        JFROG_CLI_HOME_DIR = '${WORKSPACE}/'
+  }
   stages {
     stage('Upload to Artifactory') {
       steps {
