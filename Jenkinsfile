@@ -4,10 +4,14 @@ pipeline {
     docker { image 'maven:latest'
            }
   }
+  // environment {
+  //       JFROG_CLI_HOME_DIR = '${WORKSPACE}/custom/jfrog_home'
+  // }
   stages {
     stage('Upload to Artifactory') {
       steps {
         script {
+            echo "${WORKSPACE}"
             uploadArtifactory.execute()
         }
       }
