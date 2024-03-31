@@ -18,10 +18,11 @@ def execute() {
     // sh "echo $JFROG_CLI_HOME_DIR"
     sh "${WORKSPACE}/jfrog --version"
 
-    // Use Jenkins credentials to get Artifactory username and password
-    withCredentials([usernamePassword(credentialsId: 'jfrog-artifactory-cred', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+    // Use Jenkins credentials to get Artifactory api token
+    withCredentials([string(credentialsId: 'artifactory-access-token', variable: 'SECRET_TEXT')]) {
         // Use JFrog CLI to upload the JAR file to Artifactory
         sh "echo Jfrog config has been initiated"
+        sh "echo 'The secret is $SECRET_TEXT'"
         sh "${WORKSPACE}/jfrog rt config --url ${artifactoryUrl} --user ${USERNAME} --password ${PASSWORD} --interactive=false"
         sh "echo Jfrog config has been completed"
         sh "${WORKSPACE}/jfrog rt u ${targetJarFilePath} test-repo/testJava.jar"
