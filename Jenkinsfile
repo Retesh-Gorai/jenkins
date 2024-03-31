@@ -5,7 +5,7 @@ pipeline {
            }
   }
   environment {
-        JFROG_CLI_HOME_DIR = '${WORKSPACE}/'
+        JFROG_CLI_HOME_DIR = "${WORKSPACE}/"
   }
   stages {
     stage('Upload to Artifactory') {
