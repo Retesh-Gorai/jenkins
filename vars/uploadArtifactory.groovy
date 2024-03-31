@@ -24,7 +24,7 @@ def execute() {
         sh "echo Jfrog config has been initiated"
         sh "${WORKSPACE}/jfrog rt config --url ${artifactoryUrl} --user ${USERNAME} --password ${PASSWORD} --interactive=false"
         sh "echo Jfrog config has been completed"
-        sh "${WORKSPACE}/jfrog rt u ${targetJarFilePath} ${artifactoryUrl}/testJava.jar"
+        sh "${WORKSPACE}/jfrog rt u ${targetJarFilePath} test-repo/testJava.jar"
         sh "echo Jfrog upload has been completed"
     }
     // sh "echo Hi from retesh"
