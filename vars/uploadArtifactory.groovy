@@ -27,13 +27,14 @@ def execute() {
         // echo "${JFROG_HOME}"
         sh '${WORKSPACE}/jfrog config rm articonfig'
         sh '${WORKSPACE}/jfrog c add articonfig --url "${artifactoryUrl}" --user "${USERNAME}" --password "${PASSWORD}" --interactive=false'
+        sh '${WORKSPACE}/jfrog rt ping'
         //--access-token "${SECRET_TEXT}"
         sh '${WORKSPACE}/jfrog config use articonfig'
         sh '${WORKSPACE}/jfrog config show articonfig'
         sh "echo Jfrog config has been completed"
         // sh '${WORKSPACE}/jfrog rt u ${WORKSPACE}/${targetJarFilePath} test-repo/'
         // sh '"${WORKSPACE}/jfrog" rt u --url "${artifactoryUrl}" "${WORKSPACE}/${targetJarFilePath}" test-repo/'
-        sh "\"${WORKSPACE}/jfrog\" rt u --url \"${artifactoryUrl}\" \"${WORKSPACE}/${targetJarFilePath}\" test-repo/"
+        // sh "\"${WORKSPACE}/jfrog\" rt u --url \"${artifactoryUrl}\" \"${WORKSPACE}/${targetJarFilePath}\" test-repo/"
         sh "echo Jfrog upload has been completed"
         sh '${WORKSPACE}/jfrog config rm articonfig'
         sh "echo Jfrog articonfig has been removed successfully"
