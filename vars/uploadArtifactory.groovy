@@ -1,5 +1,5 @@
 def execute() {
-    def jfrogCliUrl = "https://releases.jfrog.io/artifactory/jfrog-cli/v2/2.55.0/jfrog-cli-linux-amd64/jfrog"
+    def jfrogCliUrl = "https://releases.jfrog.io/artifactory/jfrog-cli/v2-jf/2.32.0/jfrog-cli-linux-amd64/jf"
     // def jfrogCliVersion = "2"
     def jfrogCliInstallationDir = "/usr/local/bin"
     def targetJarFilePath = "src/target/testJava.jar"
@@ -8,35 +8,36 @@ def execute() {
     //curl -fL https://getcli.jfrog.io/v2 | sh
     //curl -fL https://install-cli.jfrog.io | sh
     // https://releases.jfrog.io/artifactory/jfrog-cli/v2/2.5.0/jfrog-cli-linux-amd64/
+    // https://releases.jfrog.io/artifactory/jfrog-cli/v2-jf/2.32.0/jfrog-cli-linux-amd64/
     // Download and install JFrog CLI
     // sh "chmod +wx ${jfrogCliInstallationDir}"
-    sh "curl -fL ${jfrogCliUrl} -o ${WORKSPACE}/jfrog"
+    sh "curl -fL ${jfrogCliUrl} -o ${WORKSPACE}/jf"
     sh "echo Jfrog cli has been installed successfully"
     sh "ls -ltR"
-    sh "chmod +x ${WORKSPACE}/jfrog"
+    sh "chmod +x ${WORKSPACE}/jf"
     sh "echo Jfrog cli permission has been modified successfully"
     // sh "echo $JFROG_CLI_HOME_DIR"
-    sh "${WORKSPACE}/jfrog --version"
+    sh "${WORKSPACE}/jf --version"
 
     // Use Jenkins credentials to get Artifactory api token
-    withCredentials([usernamePassword(credentialsId: 'retesh-jfrog-token', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+    withCredentials([usernamePassword(credentialsId: 'jfrog-jenkins-cred', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
         // Use JFrog CLI to upload the JAR file to Artifactory
         sh "echo Jfrog config has been initiated"
         sh 'echo The secret is $SECRET_TEXT'
         // sh "chmod 777 /"
         // echo "${JFROG_HOME}"
-        sh '${WORKSPACE}/jfrog config rm articonfig'
-        sh '${WORKSPACE}/jfrog c add articonfig --url "${artifactoryUrl}" --user "${USERNAME}" --password "${PASSWORD}" --interactive=false'
+        sh '${WORKSPACE}/jf config rm articonfig'
+        sh '${WORKSPACE}/jf c add articonfig --url "${artifactoryUrl}" --user "${USERNAME}" --password "${PASSWORD}" --interactive=false'
         //--access-token "${SECRET_TEXT}"
-        sh '${WORKSPACE}/jfrog config use articonfig'
-        sh '${WORKSPACE}/jfrog config show articonfig'
+        sh '${WORKSPACE}/jf config use articonfig'
+        sh '${WORKSPACE}/jf config show articonfig'
         sh "echo Jfrog config has been completed"
         // sh '${WORKSPACE}/jfrog rt ping'
         // sh '${WORKSPACE}/jfrog rt u ${WORKSPACE}/${targetJarFilePath} test-repo/'
         // sh '"${WORKSPACE}/jfrog" rt u --url "${artifactoryUrl}" "${WORKSPACE}/${targetJarFilePath}" test-repo/'
-        sh "\"${WORKSPACE}/jfrog\" rt u --url \"${artifactoryUrl}\" \"${WORKSPACE}/${targetJarFilePath}\" test-repo/ --server-id articonfig"
+        sh "\"${WORKSPACE}/jf\" rt u --url \"${artifactoryUrl}\" \"${WORKSPACE}/${targetJarFilePath}\" test-repo/ --server-id articonfig"
         sh "echo Jfrog upload has been completed"
-        sh '${WORKSPACE}/jfrog config rm articonfig'
+        sh '${WORKSPACE}/jf config rm articonfig'
         sh "echo Jfrog articonfig has been removed successfully"
     }
     // sh "echo Hi from retesh"
