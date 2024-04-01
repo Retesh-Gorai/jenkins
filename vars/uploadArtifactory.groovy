@@ -31,10 +31,10 @@ def execute() {
         sh '${WORKSPACE}/jfrog config use articonfig'
         sh '${WORKSPACE}/jfrog config show articonfig'
         sh "echo Jfrog config has been completed"
-        sh '${WORKSPACE}/jfrog rt ping'
+        // sh '${WORKSPACE}/jfrog rt ping'
         // sh '${WORKSPACE}/jfrog rt u ${WORKSPACE}/${targetJarFilePath} test-repo/'
         // sh '"${WORKSPACE}/jfrog" rt u --url "${artifactoryUrl}" "${WORKSPACE}/${targetJarFilePath}" test-repo/'
-        // sh "\"${WORKSPACE}/jfrog\" rt u --url \"${artifactoryUrl}\" \"${WORKSPACE}/${targetJarFilePath}\" test-repo/"
+        sh "\"${WORKSPACE}/jfrog\" rt u --url \"${artifactoryUrl}\" \"${WORKSPACE}/${targetJarFilePath}\" test-repo/"
         sh "echo Jfrog upload has been completed"
         sh '${WORKSPACE}/jfrog config rm articonfig'
         sh "echo Jfrog articonfig has been removed successfully"
