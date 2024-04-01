@@ -3,7 +3,7 @@ def execute() {
     // def jfrogCliVersion = "2"
     def jfrogCliInstallationDir = "/usr/local/bin"
     def targetJarFilePath = "src/target/testJava.jar"
-    def artifactoryUrl = "https://devopsorg.jfrog.io/artifactory/"
+    def artifactoryUrl = "https://devopsorg.jfrog.io/"
 
     //curl -fL https://getcli.jfrog.io/v2 | sh
     //curl -fL https://install-cli.jfrog.io | sh
