@@ -28,7 +28,7 @@ def execute() {
         // sh "chmod 777 /"
         // echo "${JFROG_HOME}"
         sh '${WORKSPACE}/jf config rm articonfig'
-        sh "\"${WORKSPACE}/jf\" c add articonfig --url \"${artifactoryUrl}\" --access-token \"${SECRET_TEXT}\" --interactive=false"
+        // sh "\"${WORKSPACE}/jf\" c add articonfig --url \"${artifactoryUrl}\" --access-token \"${SECRET_TEXT}\" --interactive=false"
         //--access-token "${SECRET_TEXT}"
         sh '${WORKSPACE}/jf config use articonfig'
         sh '${WORKSPACE}/jf config show articonfig'
@@ -36,7 +36,7 @@ def execute() {
         // sh '${WORKSPACE}/jfrog rt ping'
         // sh '${WORKSPACE}/jfrog rt u ${WORKSPACE}/${targetJarFilePath} test-repo/'
         // sh '"${WORKSPACE}/jfrog" rt u --url "${artifactoryUrl}" "${WORKSPACE}/${targetJarFilePath}" test-repo/'
-        sh "\"${WORKSPACE}/jf\" rt u --url \"${artifactoryUrl}\" --flat=true --server-id articonfig \"${WORKSPACE}/${targetJarFilePath}\" artifactory/test-repo/"
+        sh "\"${WORKSPACE}/jf\" rt u --url \"${artifactoryUrl}\" --flat=true --access-token \"${SECRET_TEXT}\" \"${WORKSPACE}/${targetJarFilePath}\" artifactory/test-repo/"
         sh "echo Jfrog upload has been completed"
         sh '${WORKSPACE}/jf config rm articonfig'
         sh "echo Jfrog articonfig has been removed successfully"
