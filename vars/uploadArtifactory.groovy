@@ -30,9 +30,9 @@ def execute() {
         sh '${WORKSPACE}/jf config rm articonfig'
         // sh "\"${WORKSPACE}/jf\" c add articonfig --url \"${artifactoryUrl}\" --access-token \"${SECRET_TEXT}\" --interactive=false"
         //--access-token "${SECRET_TEXT}"
-        sh '${WORKSPACE}/jf config use articonfig'
-        sh '${WORKSPACE}/jf config show articonfig'
-        sh "echo Jfrog config has been completed"
+        // sh '${WORKSPACE}/jf config use articonfig'
+        // sh '${WORKSPACE}/jf config show articonfig'
+        // sh "echo Jfrog config has been completed"
         // sh '${WORKSPACE}/jfrog rt ping'
         // sh '${WORKSPACE}/jfrog rt u ${WORKSPACE}/${targetJarFilePath} test-repo/'
         // sh '"${WORKSPACE}/jfrog" rt u --url "${artifactoryUrl}" "${WORKSPACE}/${targetJarFilePath}" test-repo/'
