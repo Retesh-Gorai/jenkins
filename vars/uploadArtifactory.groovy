@@ -1,5 +1,5 @@
 def execute() {
-    def jfrogCliUrl = "https://releases.jfrog.io/artifactory/jfrog-cli/v2-jf/2.32.0/jfrog-cli-linux-amd64/jf"
+    def jfrogCliUrl = "https://releases.jfrog.io/artifactory/jfrog-cli/v2-jf/2.50.0/jfrog-cli-linux-amd64/jf"
     // def jfrogCliVersion = "2"
     def jfrogCliInstallationDir = "/usr/local/bin"
     def targetJarFilePath = "src/target/testJava.jar"
