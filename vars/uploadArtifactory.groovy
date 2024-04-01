@@ -35,7 +35,7 @@ def execute() {
         // sh '${WORKSPACE}/jfrog rt ping'
         // sh '${WORKSPACE}/jfrog rt u ${WORKSPACE}/${targetJarFilePath} test-repo/'
         // sh '"${WORKSPACE}/jfrog" rt u --url "${artifactoryUrl}" "${WORKSPACE}/${targetJarFilePath}" test-repo/'
-        sh "\"${WORKSPACE}/jf\" rt u --url \"${artifactoryUrl}\" --flat=true \"${WORKSPACE}/${targetJarFilePath}\" artifactory/test-repo/"
+        sh "\"${WORKSPACE}/jf\" rt u --url \"${artifactoryUrl}\" --flat=true --server-id articonfig \"${WORKSPACE}/${targetJarFilePath}\" artifactory/test-repo/"
         sh "echo Jfrog upload has been completed"
         sh '${WORKSPACE}/jf config rm articonfig'
         sh "echo Jfrog articonfig has been removed successfully"
