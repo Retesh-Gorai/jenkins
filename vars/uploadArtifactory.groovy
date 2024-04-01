@@ -20,14 +20,15 @@ def execute() {
     sh "${WORKSPACE}/jf --version"
 
     // Use Jenkins credentials to get Artifactory api token
-    withCredentials([usernamePassword(credentialsId: 'jfrog-jenkins-cred', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+    // withCredentials([usernamePassword(credentialsId: 'jfrog-jenkins-cred', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+    withCredentials([string(credentialsId: 'artifactory-access-token', variable: 'SECRET_TEXT')]) {
         // Use JFrog CLI to upload the JAR file to Artifactory
         sh "echo Jfrog config has been initiated"
         sh 'echo The secret is $SECRET_TEXT'
         // sh "chmod 777 /"
         // echo "${JFROG_HOME}"
         sh '${WORKSPACE}/jf config rm articonfig'
-        sh '${WORKSPACE}/jf c add articonfig --url "${artifactoryUrl}" --user "${USERNAME}" --password "${PASSWORD}" --interactive=false'
+        sh '${WORKSPACE}/jf c add articonfig --url "${artifactoryUrl}" --access-token "${SECRET_TEXT}" --interactive=false'
         //--access-token "${SECRET_TEXT}"
         sh '${WORKSPACE}/jf config use articonfig'
         sh '${WORKSPACE}/jf config show articonfig'
