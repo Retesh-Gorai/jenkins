@@ -28,7 +28,7 @@ def execute() {
         // sh "chmod 777 /"
         // echo "${JFROG_HOME}"
         sh '${WORKSPACE}/jf config rm articonfig'
-        sh '${WORKSPACE}/jf c add articonfig --url "${artifactoryUrl}" --access-token "${SECRET_TEXT}" --interactive=false'
+        sh "\"${WORKSPACE}/jf\" c add articonfig --url \"${artifactoryUrl}\" --access-token \"${SECRET_TEXT}\" --interactive=false"
         //--access-token "${SECRET_TEXT}"
         sh '${WORKSPACE}/jf config use articonfig'
         sh '${WORKSPACE}/jf config show articonfig'
